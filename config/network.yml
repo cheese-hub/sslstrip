@@ -1,0 +1,14 @@
+#only allow access to rkalyana and rkalyana-public pods
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: arpspoof-internal
+spec:
+  podSelector:
+    matchExpressions:
+    - {key: group, operator: In, values: [rkalyana,rkalyana-public]}
+  ingress:
+  - from:
+    - podSelector:
+        matchExpressions:
+        - {key: group, operator: In, values: [rkalyana,rkalyana-public]}

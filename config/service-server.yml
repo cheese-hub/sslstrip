@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-server
+  labels:
+    group: rkalyana-public
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+  - name: https
+    port: 443
+    protocol: TCP
+  - name: wetty
+    port: 3000
+    protocol: TCP
+  selector:
+    app: arpspoof-server

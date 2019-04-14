@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case "$1" in
+    up)
+	kubectl run --image rkalyana/arpspoof-victim --port 80 arpspoof-victim
+	kubectl expose deployment arpspoof-victim --type NodePort
+	;;
+    down)
+	kubectl delete deployment arpspoof-victim
+	kubectl delete service arpspoof-victim
+	;;
+    *)
+	echo "Usage: victim up|down"
+	;;
+esac

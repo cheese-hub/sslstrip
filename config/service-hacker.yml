@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-hacker
+  labels:
+    group: rkalyana-public
+spec:
+  type: NodePort
+  ports:
+  - name: jupyter
+    port: 8888
+    protocol: TCP
+  selector:
+    app: arpspoof-hacker

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server
+  labels:
+    group: rkalyana
+    app: arpspoof-server
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - {key: app, operator: In, values: [arpspoof-hacker]}
+        topologyKey: kubernetes.io/hostname
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - {key: app, operator: In, values: [arpspoof-server]}
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - name: server
+    image: rkalyana/arpspoof-server
+    ports:
+    - containerPort: 80
+    - containerPort: 443
+    - containerPort: 3000

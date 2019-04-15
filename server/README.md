@@ -1,4 +1,4 @@
-# Arpspoof Server
+# SSLStrip Server
 
 This container implements a server that a victim communicates with before being subjected to an ARP poisoning attack. 
 The container includes a simple web server and Wetty web-based terminal interface. 
@@ -6,11 +6,11 @@ The container includes a simple web server and Wetty web-based terminal interfac
 To build the container,
 
 ``
-docker build -t cheesehub/arpspoof-server .
+docker build -t cheesehub/sslstrip-server .
 ``
 
 To run and access the Wetty terminal,
 
 ``
-docker run -d -p 3000 cheesehub/arpspoof-server
+docker run -d -p 3000 cheesehub/sslstrip-server
 ``

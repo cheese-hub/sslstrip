@@ -1,15 +1,15 @@
-# ArpSpoof Hacker
+# SSLStrip Hacker
 
-This container includes a Jupyter notebook server and Jupyter notebook with step-by-step instructions for performing an ARP poisoning attack. 
+This container includes a Jupyter notebook server and two Jupyter notebooks with step-by-step instructions for performing an ARP poisoning attack and SSL strip attack. 
 
 To build the container:
 
 ``
-docker build -t cheesehub/arpspoof-hacker .
+docker build -t cheesehub/sslstrip-hacker .
 ``
 
 To run:
 
 ``
-docker run -d -p 8888 cheesehub/arpspoof-hacker
+docker run --cap-add=NET_ADMIN -d -p 8888 cheesehub/sslstrip-hacker
 ``

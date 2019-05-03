@@ -12,5 +12,5 @@ docker build -t cheesehub/sslstrip-server .
 To run and access the Wetty terminal,
 
 ``
-docker run -d -p 3000 cheesehub/sslstrip-server
+docker run -d -p 8888 cheesehub/sslstrip-server
 ``

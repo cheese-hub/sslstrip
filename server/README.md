@@ -1,15 +1,15 @@
 # SSLStrip Server
 
-This container implements a server that a victim communicates with before being subjected to an ARP poisoning attack. 
-The container includes a simple web server and Wetty web-based terminal interface. 
+This container implements a server that a victim communicates with before being subjected to an ARP poisoning attack and a SSL strip attack. 
+The container includes a Jupyter notebook server. 
 
-To build the container,
+To build the container:
 
 ``
 docker build -t cheesehub/sslstrip-server .
 ``
 
-To run and access the Wetty terminal,
+To run:
 
 ``
 docker run -d -p 8888 cheesehub/sslstrip-server

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: victim
+  labels:
+    group: rkalyana-public
+    app: arpspoof-victim
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - {key: app, operator: In, values: [arpspoof-hacker]}
+        topologyKey: kubernetes.io/hostname
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - {key: app, operator: In, values: [arpspoof-victim]}
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - name: victim
+    image: rkalyana/arpspoof-victim
+    ports:
+    - containerPort: 6901

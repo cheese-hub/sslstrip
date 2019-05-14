@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case "$1" in
+    up)
+	kubectl run --image rkalyana/arpspoof-hacker --port 8888 arpspoof-hacker
+	kubectl expose deployment arpspoof-hacker --type NodePort
+	;;
+    down)
+	kubectl delete deployment arpspoof-hacker
+	kubectl delete service arpspoof-hacker
+	;;
+    *)
+	echo "Usage: hacker up|down"
+	;;
+esac

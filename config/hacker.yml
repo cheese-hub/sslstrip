@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hacker
+  labels:
+    group: rkalyana-public
+    app: arpspoof-hacker
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - {key: app, operator: In, values: [arpspoof-hacker]}
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - name: hacker
+    image: rkalyana/arpspoof-hacker
+    ports:
+    - containerPort: 8888
+    securityContext:
+      capabilities:
+        add:
+          - NET_ADMIN

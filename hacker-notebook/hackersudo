@@ -1,0 +1,3 @@
+jovyan ALL=(root) NOPASSWD: /usr/sbin/arpspoof
+jovyan ALL=(root) NOPASSWD: /sbin/iptables
+

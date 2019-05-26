@@ -42,7 +42,7 @@ COPY sslstrip /tmp
 WORKDIR /tmp
 
 # Install SSLStrip and its dependencies
-RUN pip install pyopenssl service_identity Twisted && \
+RUN pip install pyopenssl service_identity Twisted==18.9.0 && \
     python setup.py install && \
     rm -rf /tmp/sslstrip && \
     fix-permissions $CONDA_DIR
@@ -51,7 +51,7 @@ RUN pip install pyopenssl service_identity Twisted && \
 COPY --chown=1000:100 Hacker.ipynb $HOME/
 COPY --chown=1000:100 SSLStrip.ipynb $HOME/
 
-WORKDIR $HOME
+
 
 CMD ["start-notebook.sh","--NotebookApp.token="]
 

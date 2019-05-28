@@ -42,7 +42,7 @@ COPY sslstrip /tmp
 WORKDIR /tmp
 
 # Install SSLStrip and its dependencies
-RUN pip install pyopenssl service_identity Twisted && \
+RUN pip install pyopenssl service_identity Twisted==18.9.0 && \
     python setup.py install && \
     rm -rf /tmp/sslstrip && \
     fix-permissions $CONDA_DIR

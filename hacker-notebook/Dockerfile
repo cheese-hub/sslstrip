@@ -51,7 +51,7 @@ RUN pip install pyopenssl service_identity Twisted==18.9.0 && \
 COPY --chown=1000:100 Hacker.ipynb $HOME/
 COPY --chown=1000:100 SSLStrip.ipynb $HOME/
 
-
+WORKDIR $HOME
 
 CMD ["start-notebook.sh","--NotebookApp.token="]
 

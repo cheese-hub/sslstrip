@@ -10,19 +10,19 @@ USER root
 # Install Apache2
 RUN apt-get update && \
     apt-get install -y \
-	apache2 \
-	apache2-utils \
-	libapache2-mod-wsgi-py3 \
-	ssl-cert \
-	net-tools \
-	supervisor
+	apache2=2.4.29-1ubuntu4.6 \
+	apache2-utils=2.4.29-1ubuntu4.6 \
+	libapache2-mod-wsgi-py3=4.5.17-1 \
+	ssl-cert=1.0.39 \
+	net-tools=1.60+git20161116.90da8a0-1ubuntu1 \
+	supervisor=3.3.1-1.1
 
 # Create the default directory
 RUN mkdir -p /srv/www/app
 
 # Clone the app and install packages
 ADD app /srv/www/app
-RUN pip install Flask
+RUN pip install Flask==1.0.3
 
 #copy conf files for our new app over to Apache's conf
 ADD conf /etc/apache2/sites-available
